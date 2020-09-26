@@ -38,7 +38,7 @@ const Modal = () => {
           position={hasDraggedWindowPosition ? { x: windowPosition.x, y: windowPosition.y } : null}
         >
           <div id="modal" className="modal-window" style={{
-            transform: windowPosition, height:addPx(heightWidth[0], 100), width:addPx(heightWidth[1], 100)
+            transform: windowPosition, height:addPx(heightWidth.height, 100), width:addPx(heightWidth.width, 100)
         }}>
             <div className="modal-window-inner-border">
                 <>
@@ -49,7 +49,7 @@ const Modal = () => {
                       </div>
                     </div>
                     <div className="modal-content">
-                    <img src={screenShot} style={{height:heightWidth[0], width:heightWidth[1]}}/>
+                    <img src={screenShot} style={{height:heightWidth.height, width:heightWidth.width}}/>
                     </div>
                   </div>
                 </>
