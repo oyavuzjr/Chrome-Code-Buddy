@@ -6,7 +6,7 @@ import { ModalContext } from '../Contexts/ModalProvider';
 const Modal = () => {
   return (
     <ModalContext.Consumer>
-      {({ windowPosition, hasDraggedWindowPosition, extensionId, getExtensionId }) => (
+      {({ windowPosition, hasDraggedWindowPosition, screenShot}) => (
         <Draggable
           handle=".modal-handle"
           defaultPosition={{x: windowPosition.x, y: windowPosition.y}}
@@ -24,13 +24,7 @@ const Modal = () => {
                       </div>
                     </div>
                     <div className="modal-content">
-                      <h3>{extensionId}</h3>
-                      <button
-                        onClick={getExtensionId}
-                        className="modal-button"
-                      >
-                        Get Extension ID
-                      </button>
+                    <img src={screenShot}/>
                     </div>
                   </div>
                 </>

@@ -6,26 +6,44 @@ export const ModalContext = React.createContext({});
 const ModalProvider = ({ children }) => {
   const { windowPosition } = useWindowPosition();
   const [extensionId, setExtensionId] = useState(undefined);
+  const [screenShot, setScreenShot] = useState(undefined);
 
   function getExtensionId() {
     window.postMessage({ type: "GET_EXTENSION_ID" }, "*");
   }
 
+  function getScreenShot(){
+    let video = document.getElementsByClassName("video-stream")[0];
+    let canvas = document.createElement('canvas');
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    let context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    let image = document.createElement('a');
+    image.download = 'snap-' + video.currentTime + '.png';
+    image.href = canvas.toDataURL('image/jpeg', 1.0);
+    console.log("Baban")
+    console.log(image.href)
+    window.postMessage({ type: "GET_SCREENSHOT", myMessage: image.href }, "*");
+
+    return image.href
+
+  }
+
   useEffect(() => {
     // Set up event listeners from Content script
     window.addEventListener("message", function(event) {
-      if (event.source !== window) return;
-      if (event.data.type && (event.data.type === "EXTENSION_ID_RESULT")) {
-        setExtensionId(event.data.extensionId);
-      }
-    });
+      setScreenShot(getScreenShot());
+      });
   }, []);
 
   return (
     <ModalContext.Provider
       value={{
-        extensionId,
-        getExtensionId,
+        screenShot,
         windowPosition,
       }}
     >
