@@ -12,11 +12,11 @@
   will-change: transform;
   margin-top: 2em;
   position: absolute;
-  background: rgba(30, 32, 44, .99);
+  background: rgba(30, 32, 44, 0.99);
   min-width: 150px;
   height: initial;
   border-radius: 3px;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   z-index: 9999;
   border: 1px solid #333748;
 }
@@ -31,11 +31,11 @@
 
 .modal-window-inner-border:before {
   position: absolute;
-  top: .4px;
-  left: .4px;
-  right: .4px;
-  bottom: .4px;
-  border: .5px solid #57566d;
+  top: 0.4px;
+  left: 0.4px;
+  right: 0.4px;
+  bottom: 0.4px;
+  border: 0.5px solid #57566d;
   border-radius: 3px;
 }
 
@@ -55,7 +55,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  padding: 0.5rem .5rem 2.5rem .5rem;
+  padding: 0.5rem 0.5rem 2.5rem 0.5rem;
   font-size: 14px;
   line-height: 24px;
   height: 275px;
@@ -82,7 +82,7 @@
 }
 
 .modal-button {
-  background-image: linear-gradient(25deg,#21d4fd,#b721ff 50%,#017eff);
+  background-image: linear-gradient(25deg, #21d4fd, #b721ff 50%, #017eff);
   background-size: 500%;
   border: none;
   border-radius: 3px;
@@ -93,4 +93,3 @@
   height: 40px;
   width: 150px;
 }
-
