@@ -1,3 +1,7 @@
+#modal {
+  height: 600px;
+}
+
 #modal-window {
   position: absolute;
   width: 99%;
@@ -58,9 +62,9 @@
   padding: 0.5rem 0.5rem 2.5rem 0.5rem;
   font-size: 14px;
   line-height: 24px;
-  height: 275px;
   min-width: 400px;
   overflow: auto;
+  height: 100%;
 }
 
 .modal-content-drawer-handle {
