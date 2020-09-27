@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { X } from "react-feather";
 import Draggable from "react-draggable";
 import { ModalContext } from "../Contexts/ModalProvider";
@@ -9,6 +9,8 @@ import "react-image-crop/dist/ReactCrop.css";
 import { recognize } from "../Ocr.js";
 
 const Modal = () => {
+  const [formValue, setFormValue] = useState("");
+
   return (
     <ModalContext.Consumer>
       {({
@@ -18,7 +20,7 @@ const Modal = () => {
         heightWidth,
         crop,
         setCrop,
-        cropImage
+        cropImage,
       }) => (
         <Draggable
           handle=".modal-handle"
@@ -54,10 +56,24 @@ const Modal = () => {
                     <Container fluid>
                       <Form>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                          <Form.Control as="textarea" rows="5" />
+                          <Form.Control
+                            as="textarea"
+                            rows="5"
+                            value={formValue}
+                            onChange={(e) => {
+                              setFormValue(e.target.value);
+                            }}
+                          />
                         </Form.Group>
                       </Form>
-                      <Button onClick={() => recognize(cropImage(screenShot, crop))}>
+                      <Button
+                        onClick={() =>
+                          recognize(
+                            cropImage(screenShot, crop, heightWidth),
+                            setFormValue
+                          )
+                        }
+                      >
                         oha bufonu
                       </Button>
                     </Container>

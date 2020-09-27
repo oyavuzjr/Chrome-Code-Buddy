@@ -11,8 +11,8 @@ const ModalProvider = ({ children }) => {
   const [heightWidth, setHeightWidth] = useState({});
   const [crop, setCrop] = useState({
     unit: "px", // default, can be 'px' or '%'
-    x: 130,
-    y: 50,
+    x: 0,
+    y: 0,
   });
   function getExtensionId() {
     window.postMessage({ type: "GET_EXTENSION_ID" }, "*");
