@@ -8,28 +8,6 @@ import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { recognize } from "../Ocr.js";
 
-export function image64toCanvasRef(canvasRef, image64, pixelCrop) {
-  const canvas = canvasRef; // document.createElement('canvas');
-  canvas.width = pixelCrop.width;
-  canvas.height = pixelCrop.height;
-  const ctx = canvas.getContext("2d");
-  const image = new Image();
-  image.src = image64;
-  image.onload = function () {
-    ctx.drawImage(
-      image,
-      pixelCrop.x,
-      pixelCrop.y,
-      pixelCrop.width,
-      pixelCrop.height,
-      0,
-      0,
-      pixelCrop.width,
-      pixelCrop.height
-    );
-  };
-}
-
 const Modal = () => {
   return (
     <ModalContext.Consumer>
@@ -40,6 +18,7 @@ const Modal = () => {
         heightWidth,
         crop,
         setCrop,
+        cropImage
       }) => (
         <Draggable
           handle=".modal-handle"
@@ -78,7 +57,7 @@ const Modal = () => {
                           <Form.Control as="textarea" rows="5" />
                         </Form.Group>
                       </Form>
-                      <Button onClick={() => recognize(screenShot)}>
+                      <Button onClick={() => recognize(cropImage(screenShot, crop))}>
                         oha bufonu
                       </Button>
                     </Container>

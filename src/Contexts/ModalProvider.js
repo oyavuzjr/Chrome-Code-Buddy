@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useWindowPosition from "../Hooks/useWindowPosition";
+import {cropImage} from "./cropImage"
 
 export const ModalContext = React.createContext({});
 
@@ -52,6 +53,7 @@ const ModalProvider = ({ children }) => {
         heightWidth,
         crop,
         setCrop,
+        cropImage
       }}
     >
       {children}
