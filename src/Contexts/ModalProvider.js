@@ -23,13 +23,11 @@ const ModalProvider = ({ children }) => {
     let context = canvas.getContext("2d");
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-
-    setHeightWidth({height:video.style.height, width: video.style.width})
+    setHeightWidth({ height: video.style.height, width: video.style.width });
     let image = document.createElement("a");
     image.download = "snap-" + video.currentTime + ".png";
     image.href = canvas.toDataURL("image/jpeg", 1.0);
     console.log("Baban");
-    console.log(image.href);
     window.postMessage({ type: "GET_SCREENSHOT", myMessage: image.href }, "*");
 
     return image.href;
@@ -47,7 +45,7 @@ const ModalProvider = ({ children }) => {
       value={{
         screenShot,
         windowPosition,
-        heightWidth
+        heightWidth,
       }}
     >
       {children}
