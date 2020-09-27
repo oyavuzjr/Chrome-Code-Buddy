@@ -20,7 +20,7 @@ const Modal = () => {
         heightWidth,
         crop,
         setCrop,
-        cropImage
+        cropImage,
       }) => (
         <Draggable
           handle=".modal-handle"
@@ -51,16 +51,29 @@ const Modal = () => {
                       onComplete={(crop, pixelCrop) => {
                         console.log(crop, pixelCrop);
                       }}
-                      style={{height: heightWidth.height, width: heightWidth.width}}
                     />
 
                     <Container fluid>
                       <Form>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                          <Form.Control as="textarea" rows="5" value={formValue}/>
+                          <Form.Control
+                            as="textarea"
+                            rows="5"
+                            value={formValue}
+                            onChange={(e) => {
+                              setFormValue(e.target.value);
+                            }}
+                          />
                         </Form.Group>
                       </Form>
-                      <Button onClick={() => recognize(cropImage(screenShot, crop, heightWidth), setFormValue)}>
+                      <Button
+                        onClick={() =>
+                          recognize(
+                            cropImage(screenShot, crop, heightWidth),
+                            setFormValue
+                          )
+                        }
+                      >
                         oha bufonu
                       </Button>
                     </Container>
