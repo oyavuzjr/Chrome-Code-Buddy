@@ -6,6 +6,29 @@ import { Form, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
+import { recognize } from "../Ocr.js";
+
+export function image64toCanvasRef(canvasRef, image64, pixelCrop) {
+  const canvas = canvasRef; // document.createElement('canvas');
+  canvas.width = pixelCrop.width;
+  canvas.height = pixelCrop.height;
+  const ctx = canvas.getContext("2d");
+  const image = new Image();
+  image.src = image64;
+  image.onload = function () {
+    ctx.drawImage(
+      image,
+      pixelCrop.x,
+      pixelCrop.y,
+      pixelCrop.width,
+      pixelCrop.height,
+      0,
+      0,
+      pixelCrop.width,
+      pixelCrop.height
+    );
+  };
+}
 
 const Modal = () => {
   return (
@@ -37,23 +60,27 @@ const Modal = () => {
                     </div>
                   </div>
                   <div className="modal-content">
+                    <h1>Please Select Code</h1>
                     <ReactCrop
                       src={screenShot}
                       crop={crop}
                       onChange={(crop) => {
                         setCrop(crop);
                       }}
+                      onComplete={(crop, pixelCrop) => {
+                        console.log(crop, pixelCrop);
+                      }}
                     />
 
                     <Container fluid>
-                      <h1>Select Code</h1>
                       <Form>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                          <Form.Label>Example textarea</Form.Label>
-                          <Form.Control as="textarea" rows="3" />
+                          <Form.Control as="textarea" rows="5" />
                         </Form.Group>
                       </Form>
-                      <Button>oha bufonu</Button>
+                      <Button onClick={() => recognize(screenShot)}>
+                        oha bufonu
+                      </Button>
                     </Container>
                   </div>
                 </div>

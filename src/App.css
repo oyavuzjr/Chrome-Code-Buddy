@@ -1,3 +1,7 @@
+#modal h1 {
+  color: white;
+}
+
 #modal-window {
   position: absolute;
   width: 99%;
