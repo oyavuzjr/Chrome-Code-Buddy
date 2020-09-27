@@ -11,6 +11,7 @@
     "react-dom": "16.9.0",
     "react-draggable": "4.0.3",
     "react-feather": "2.0.3",
+    "react-image-crop": "^8.6.5",
     "react-scripts": "3.1.2"
   },
   "scripts": {

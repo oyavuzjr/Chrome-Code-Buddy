@@ -4,17 +4,10 @@ import Draggable from "react-draggable";
 import { ModalContext } from "../Contexts/ModalProvider";
 import { Form, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ReactCrop from "react-image-crop";
+import "react-image-crop/dist/ReactCrop.css";
 
 const Modal = () => {
-  const addPx = async (initial, toAdd) => {
-    console.log(initial);
-    let num;
-    num = parseInt(initial.slice(0, -2));
-    num += toAdd;
-    let toReturn = num.toString() + "px";
-
-    return toReturn;
-  };
   return (
     <ModalContext.Consumer>
       {({
@@ -22,6 +15,8 @@ const Modal = () => {
         hasDraggedWindowPosition,
         screenShot,
         heightWidth,
+        crop,
+        setCrop,
       }) => (
         <Draggable
           handle=".modal-handle"
@@ -42,11 +37,11 @@ const Modal = () => {
                     </div>
                   </div>
                   <div className="modal-content">
-                    <img
+                    <ReactCrop
                       src={screenShot}
-                      style={{
-                        height: heightWidth.height,
-                        width: heightWidth.width,
+                      crop={crop}
+                      onChange={(crop) => {
+                        setCrop(crop);
                       }}
                     />
 

@@ -8,7 +8,11 @@ const ModalProvider = ({ children }) => {
   const [extensionId, setExtensionId] = useState(undefined);
   const [screenShot, setScreenShot] = useState(undefined);
   const [heightWidth, setHeightWidth] = useState({});
-
+  const [crop, setCrop] = useState({
+    unit: "px", // default, can be 'px' or '%'
+    x: 130,
+    y: 50,
+  });
   function getExtensionId() {
     window.postMessage({ type: "GET_EXTENSION_ID" }, "*");
   }
@@ -46,6 +50,8 @@ const ModalProvider = ({ children }) => {
         screenShot,
         windowPosition,
         heightWidth,
+        crop,
+        setCrop,
       }}
     >
       {children}
