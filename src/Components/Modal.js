@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { X } from "react-feather";
 import Draggable from "react-draggable";
 import { ModalContext } from "../Contexts/ModalProvider";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button, Col, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { recognize } from "../Ocr.js";
-
+import { BeatLoader } from "react-spinners";
 const Modal = () => {
   const [formValue, setFormValue] = useState("");
-
+  const [pending, setPending] = useState(false);
   return (
     <ModalContext.Consumer>
       {({
@@ -66,16 +66,30 @@ const Modal = () => {
                           />
                         </Form.Group>
                       </Form>
-                      <Button
-                        onClick={() =>
-                          recognize(
-                            cropImage(screenShot, crop, heightWidth),
-                            setFormValue
-                          )
-                        }
-                      >
-                        oha bufonu
-                      </Button>
+                      <Row>
+                        <Button
+                          disabled={pending}
+                          onClick={() => {
+                            setPending(true);
+                            recognize(
+                              cropImage(screenShot, crop, heightWidth),
+                              setFormValue,
+                              setPending
+                            );
+                          }}
+                        >
+                          oha bufonu
+                        </Button>
+
+                        {pending ? (
+                          <BeatLoader
+                            hidden={pending ? "" : "hidden"}
+                            color={"#e84118"}
+                          />
+                        ) : (
+                          <></>
+                        )}
+                      </Row>
                     </Container>
                   </div>
                 </div>
