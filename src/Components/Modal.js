@@ -11,6 +11,17 @@ import { BeatLoader } from "react-spinners";
 const Modal = () => {
   const [formValue, setFormValue] = useState("");
   const [pending, setPending] = useState(false);
+
+  const modifySize = (x, f) => {
+    if (x != undefined) {
+      x = parseInt(x.slice(0, -2));
+      console.log(x);
+      let result = f(x).toString() + "px";
+      console.log(result);
+      return result;
+    }
+  };
+
   return (
     <ModalContext.Consumer>
       {({
@@ -41,8 +52,16 @@ const Modal = () => {
                     </div>
                   </div>
                   <div className="modal-content">
-                    <h1>Please Select Code</h1>
+                    <h1>Code Buddy</h1>
                     <ReactCrop
+                      style={{
+                        width: modifySize(heightWidth["width"], (a) => {
+                          return 0.5 * a;
+                        }),
+                        height: modifySize(heightWidth["height"], (a) => {
+                          return 0.5 * a;
+                        }),
+                      }}
                       src={screenShot}
                       crop={crop}
                       onChange={(crop) => {
@@ -67,28 +86,25 @@ const Modal = () => {
                         </Form.Group>
                       </Form>
                       <Row>
-                        <Button
-                          disabled={pending}
-                          onClick={() => {
-                            setPending(true);
-                            recognize(
-                              cropImage(screenShot, crop, heightWidth),
-                              setFormValue,
-                              setPending
-                            );
-                          }}
-                        >
-                          oha bufonu
-                        </Button>
-
-                        {pending ? (
-                          <BeatLoader
-                            hidden={pending ? "" : "hidden"}
-                            color={"#e84118"}
-                          />
-                        ) : (
-                          <></>
-                        )}
+                        <Col xs={5}>
+                          <Button
+                            disabled={pending}
+                            onClick={() => {
+                              setPending(true);
+                              recognize(
+                                cropImage(screenShot, crop, heightWidth),
+                                setFormValue,
+                                setPending
+                              );
+                            }}
+                          >
+                            oha bufonu
+                          </Button>
+                        </Col>
+                        <Col xs={2}>
+                          {pending ? <BeatLoader color={"#e84118"} /> : ""}
+                        </Col>
+                        <Col xs={5}></Col>
                       </Row>
                     </Container>
                   </div>
