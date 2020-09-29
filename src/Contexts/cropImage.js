@@ -1,3 +1,5 @@
+import {thresholdBinarize} from './threshold'
+
 export function cropImage(image64, pixelCrop, {factorWidth, factorHeight}) {
   // Todo Remove console log
 
@@ -20,6 +22,8 @@ export function cropImage(image64, pixelCrop, {factorWidth, factorHeight}) {
   );
   // image.download = "snap-" + video.currentTime + ".png";
   const url = canvas.toDataURL("image/jpeg", 1.0);
+  // const url_binary = thresholdBinarize(ctx, canvas)
   console.log(url);
+
   return url;
 }
