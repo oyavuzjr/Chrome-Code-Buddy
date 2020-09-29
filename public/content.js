@@ -4,6 +4,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
   main();
 });
 
+let burakButton = document.createElement("button");
+burakButton.className = "burakButton ytp-button";
+burakButton.style.width = "auto";
+burakButton.innerHTML = "Burak";
+burakButton.style.cssFloat = "left";
+burakButton.onclick = () => main();
+
+var ytpRightControls = document.getElementsByClassName("ytp-right-controls")[0];
+if (ytpRightControls) ytpRightControls.prepend(burakButton);
+
 function main() {
   // eslint-disable-next-line no-undef
   const extensionOrigin = 'chrome-extension://' + chrome.runtime.id;

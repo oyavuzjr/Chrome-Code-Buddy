@@ -31,7 +31,6 @@ const ModalProvider = ({ children }) => {
     let image = new Image();
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     image.src = canvas.toDataURL("image/jpeg", 1.0);
-    console.log(image.src)
     setHeightWidth({ height: video.style.height, width: video.style.width ,
     factorHeight: canvas.height/styleSize(video.style.height), 
     factorWidth: canvas.width/styleSize(video.style.width)});
