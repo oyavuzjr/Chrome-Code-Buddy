@@ -12,16 +12,6 @@ const Modal = () => {
   const [formValue, setFormValue] = useState("");
   const [pending, setPending] = useState(false);
 
-  const modifySize = (x, f) => {
-    if (x != undefined) {
-      x = parseInt(x.slice(0, -2));
-      console.log(x);
-      let result = f(x).toString() + "px";
-      console.log(result);
-      return result;
-    }
-  };
-
   return (
     <ModalContext.Consumer>
       {({

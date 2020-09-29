@@ -8,7 +8,6 @@ const styleSize = (a) => parseInt(a.slice(0,-2))
 
 const ModalProvider = ({ children }) => {
   const { windowPosition } = useWindowPosition();
-  const [extensionId, setExtensionId] = useState(undefined);
   const [screenShot, setScreenShot] = useState(undefined);
   const [heightWidth, setHeightWidth] = useState({});
   const [crop, setCrop] = useState({
@@ -33,7 +32,6 @@ const ModalProvider = ({ children }) => {
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     image.src = canvas.toDataURL("image/jpeg", 1.0);
     console.log(image.src)
-    console.log(image)
     setHeightWidth({ height: video.style.height, width: video.style.width ,
     factorHeight: canvas.height/styleSize(video.style.height), 
     factorWidth: canvas.width/styleSize(video.style.width)});
