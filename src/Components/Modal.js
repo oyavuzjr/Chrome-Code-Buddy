@@ -55,12 +55,8 @@ const Modal = () => {
                     <h1>Code Buddy</h1>
                     <ReactCrop
                       style={{
-                        width: modifySize(heightWidth["width"], (a) => {
-                          return 0.5 * a;
-                        }),
-                        height: modifySize(heightWidth["height"], (a) => {
-                          return 0.5 * a;
-                        }),
+                        width: heightWidth["width"],
+                        height: heightWidth["height"],
                       }}
                       src={screenShot}
                       crop={crop}
