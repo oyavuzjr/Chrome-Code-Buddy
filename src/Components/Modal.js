@@ -37,7 +37,10 @@ const Modal = () => {
               <>
                 <div className="modal-body">
                   <div className="modal-handle">
-                    <div className="modal-close-button">
+                    <div className="modal-close-button" onClick={(event) => {
+                      let element = document.getElementById('modal')
+                      element.parentNode.removeChild(element);
+                    }}>
                       <X color="#5d6484" size="14" />
                     </div>
                   </div>
