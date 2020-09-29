@@ -3,7 +3,6 @@ export function cropImage(image64, pixelCrop, {factorWidth, factorHeight}) {
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
-  console.log(factor)
   canvas.width = pixelCrop.width * factorWidth;
   canvas.height = pixelCrop.height * factorHeight;
   const image = new Image();
