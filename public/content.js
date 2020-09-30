@@ -4,10 +4,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, callback) {
   main();
 });
 
+const extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
 let burakButton = document.createElement("button");
 burakButton.className = "burakButton ytp-button";
 burakButton.style.width = "auto";
-burakButton.innerHTML = "Burak";
+burakButton.innerHTML = `<img src="${extensionOrigin}/small-burak.png"></img>`;
 burakButton.style.cssFloat = "left";
 burakButton.onclick = () => main();
 
