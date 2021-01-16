@@ -1,13 +1,13 @@
 /* global chrome */
 
-chrome.runtime.onMessage.addListener(function(request, sender, callback) {
+chrome.runtime.onMessage.addListener(function (request, sender, callback) {
   main();
 });
 
 let burakButton = document.createElement("button");
 burakButton.className = "burakButton ytp-button";
 burakButton.style.width = "auto";
-burakButton.innerHTML = "Burak";
+burakButton.innerHTML = "Code Buddy";
 burakButton.style.cssFloat = "left";
 burakButton.onclick = () => main();
 
@@ -16,17 +16,20 @@ if (ytpRightControls) ytpRightControls.prepend(burakButton);
 
 function main() {
   // eslint-disable-next-line no-undef
-  const extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
+  const extensionOrigin = "chrome-extension://" + chrome.runtime.id;
   // eslint-disable-next-line no-restricted-globals
   if (!location.ancestorOrigins.contains(extensionOrigin)) {
     // Fetch the local React index.html page
     // eslint-disable-next-line no-undef
-    fetch(chrome.runtime.getURL('index.html') /*, options */)
+    fetch(chrome.runtime.getURL("index.html") /*, options */)
       .then((response) => response.text())
       .then((html) => {
-        const styleStashHTML = html.replace(/\/static\//g, `${extensionOrigin}/static/`);
+        const styleStashHTML = html.replace(
+          /\/static\//g,
+          `${extensionOrigin}/static/`
+        );
         // eslint-disable-next-line no-undef
-        $(styleStashHTML).appendTo('body');
+        $(styleStashHTML).appendTo("body");
       })
       .catch((error) => {
         console.warn(error);
@@ -34,15 +37,16 @@ function main() {
   }
 }
 
-window.addEventListener("message", function(event) {
+window.addEventListener("message", function (event) {
   if (event.source !== window) return;
   onDidReceiveMessage(event);
 });
 
 async function onDidReceiveMessage(event) {
-  if (event.data.type && (event.data.type === "GET_EXTENSION_ID")) {
-    window.postMessage({ type: "EXTENSION_ID_RESULT", extensionId: chrome.runtime.id }, "*");
+  if (event.data.type && event.data.type === "GET_EXTENSION_ID") {
+    window.postMessage(
+      { type: "EXTENSION_ID_RESULT", extensionId: chrome.runtime.id },
+      "*"
+    );
   }
 }
-
-

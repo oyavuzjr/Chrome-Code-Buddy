@@ -1,9 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "React Chrome Extension Boilerplate",
+  "name": "Chrome Code Buddy",
   "description": "A template of a React Chrome extension",
   "version": "1.0.0",
-  "homepage_url": "https://stylestash.dev",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -11,7 +10,7 @@
   },
   "browser_action": {
     "default_icon": "favicon.png",
-    "default_title": "React Chrome Extension Boilerplate"
+    "default_title": "Chrome Code Buddy"
   },
   "background": {
     "scripts": ["./jquery.js", "background.js"]
