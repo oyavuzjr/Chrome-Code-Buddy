@@ -87,7 +87,7 @@ const Modal = () => {
                               );
                             }}
                           >
-                            oha bufonu
+                            Submit
                           </Button>
                         </Col>
                         <Col xs={2}>
