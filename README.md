@@ -34,4 +34,3 @@ Search for any programming tutorial, and pause the video when there is a clear v
 Now press the Code Buddy button and scan the area of the code.
 After pressing submit, you will have the code as text.
 ![YouTube Button](https://github.com/oyavuzjr/Chrome-Code-Buddy/blob/master/images/example.PNG?raw=true )  
-https://github.com/oyavuzjr/Chrome-Code-Buddy/blob/master/images/example.PNG?raw=true
