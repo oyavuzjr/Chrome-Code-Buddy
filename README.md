@@ -28,4 +28,9 @@ We can now use this folder to add the extension to Chrome.
 4. Select the newly created **build** folder
 
 Now you can see the button on youtube to use the extension
-![YouTube Button](https://github.com/oyavuzjr/Chrome-Code-Buddy/images/ytbutton.png )
+![YouTube Button](https://github.com/oyavuzjr/Chrome-Code-Buddy/images/ytbutton.PNG )  
+Search for any programming tutorial, and pause the video when there is a clear view of the code. 
+Now press the Code Buddy button and scan the area of the code.
+After pressing submit, you will have the code as text.
+![YouTube Button](https://github.com/oyavuzjr/Chrome-Code-Buddy/images/example.PNG )  
+
