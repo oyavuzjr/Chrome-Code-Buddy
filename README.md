@@ -16,7 +16,7 @@ Run npm install
 Since The extension is not available on the chrome store, we will have to build and add it.  
 
     npm run build
-You should now see some files under a new directory called builds.  
+You should now see some files under a new directory called build.  
 
     ls build 
 We can now use this folder to add the extension to Chrome.
