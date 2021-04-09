@@ -1,5 +1,9 @@
 ---
 title: "Chrome-Code-Buddy"
+Technology:
+  - Nodejs
+  - React
+  - Chrome
 ---
 
 Chrome Code Buddy is a chrome extension that can be used to follow along with programming tutorials on YouTube.
